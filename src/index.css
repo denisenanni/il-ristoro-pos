@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hide scrollbar on category bar while keeping scroll behaviour */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Base touch targets */
+button {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Tablet: larger targets */
+@media (min-width: 768px) {
+  button {
+    min-height: 60px;
+  }
+  input, select {
+    min-height: 50px;
+    font-size: 18px;
+  }
+}
+
+/* Flash animation when item is added to cart */
+@keyframes flash-added {
+  0%   { background-color: rgb(255 255 255); }
+  30%  { background-color: rgb(220 252 231); } /* green-100 */
+  100% { background-color: rgb(255 255 255); }
+}
+
+.item-added {
+  animation: flash-added 350ms ease-out;
+}
+
+/* Toast slide-up */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.toast-enter {
+  animation: slide-up 200ms ease-out forwards;
+}
+
+/* Browser print fallback — hide the app, show only the receipt */
+#print-frame {
+  display: none;
+}
+
+@media print {
+  body > * {
+    display: none !important;
+  }
+  #print-frame {
+    display: block !important;
+    font-family: monospace;
+    font-size: 13px;
+    width: 58mm;
+    margin: 0 auto;
+    padding: 8px;
+  }
+}

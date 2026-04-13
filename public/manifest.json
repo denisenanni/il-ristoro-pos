@@ -1,0 +1,17 @@
+{
+  "name": "Il Ristoro POS",
+  "short_name": "POS",
+  "description": "Staff order taking system for Il Ristoro",
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#7B2D34",
+  "theme_color": "#7B2D34",
+  "icons": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ]
+}
