@@ -5,7 +5,7 @@ export const products: Product[] = [
   {
     id: "pr-cecio",
     name: "Cecio",
-    description: "Margherita con chanpignon, salsiccia e salame piccante",
+    description: "Margherita con champignon, salsiccia e salame piccante",
     price: 10.0,
     category: "pinse-rosse",
   },
