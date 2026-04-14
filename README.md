@@ -35,10 +35,12 @@ Open that URL on any tablet on the same Wi-Fi network. Works best in landscape m
 ```
 src/
 ├── components/       # UI components
-│   ├── Header.tsx        — top bar (branding, clock, item count)
-│   ├── CategoryGrid.tsx  — horizontal category selector
-│   ├── ProductGrid.tsx   — tappable product cards
-│   └── OrderCart.tsx     — right sidebar order summary
+│   ├── Header.tsx            — top bar (branding, clock, item count)
+│   ├── CategoryGrid.tsx      — horizontal category selector
+│   ├── ProductGrid.tsx       — tappable product cards
+│   ├── OrderCart.tsx         — right sidebar order summary
+│   ├── FloatingCartButton.tsx — mobile floating button showing item count + total
+│   └── PrinterStatus.tsx     — printer connect/disconnect toggle
 ├── data/
 │   └── products.ts       — full menu with prices
 ├── hooks/
@@ -48,7 +50,8 @@ src/
 │   └── index.ts          — TypeScript interfaces
 └── utils/
     ├── formatReceipt.ts  — kitchen + customer receipt formatting
-    └── print.ts          — printer integration (placeholder)
+    ├── printer.ts        — printer connection (Web Bluetooth / USB)
+    └── toast.ts          — lightweight in-app toast notifications
 ```
 
 ## Future Features
