@@ -79,6 +79,7 @@ async function sendToPrinter(data: string): Promise<void> {
 export interface KitchenTicketData {
   orderId: string;
   items: Array<{ product: { name: string; category: string }; quantity: number }>;
+  total: number;
   timestamp: Date;
   tableNumber?: string;
 }
@@ -117,6 +118,10 @@ function buildKitchenHtml(data: KitchenTicketData): string {
     ${table}
     <hr style="border:none;border-top:1px dashed #000;margin:6px 0;">
     ${rows}
+    <hr style="border:none;border-top:1px dashed #000;margin:6px 0;">
+    <div style="display:flex;justify-content:space-between;font-weight:bold;font-size:15px;">
+      <span>TOTALE</span><span>\u20AC${data.total.toFixed(2)}</span>
+    </div>
     <hr style="border:none;border-top:1px dashed #000;margin:6px 0;">
   `;
 }
@@ -208,6 +213,14 @@ export async function printKitchenTicket(data: KitchenTicketData): Promise<void>
   }
   receipt += Commands.SIZE_NORMAL;
   receipt += Commands.LINE_FEED;
+  receipt += Commands.SEPARATOR;
+
+  receipt += Commands.BOLD_ON;
+  const totalLabel = 'TOTALE:';
+  const totalValue = `\u20AC${data.total.toFixed(2)}`;
+  const totalPad = Math.max(1, 32 - totalLabel.length - totalValue.length);
+  receipt += `${totalLabel}${' '.repeat(totalPad)}${totalValue}\n`;
+  receipt += Commands.BOLD_OFF;
   receipt += Commands.SEPARATOR;
 
   receipt += Commands.LINE_FEED;
